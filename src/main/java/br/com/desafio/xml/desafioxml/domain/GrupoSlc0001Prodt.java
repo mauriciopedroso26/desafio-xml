@@ -4,13 +4,16 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import javax.xml.bind.annotation.XmlElement;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 @Entity
 @Table(name = "TA_GRUPO_SLC0001_PRODT", schema = "DESAFIO_XML")
-public class GrupoSlc0001Prodt {
+public class GrupoSlc0001Prodt implements Serializable {
+
+    private static final long serialVersionUID = -1585589179814451578L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SQ_GRUPO_SLC0001_PRODT")
@@ -84,20 +87,27 @@ public class GrupoSlc0001Prodt {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         GrupoSlc0001Prodt that = (GrupoSlc0001Prodt) o;
-        return Objects.equals(codProdt, that.codProdt) &&
-                Objects.equals(grupoSlc0001LiquidProdt, that.grupoSlc0001LiquidProdt);
+        return Objects.equals(idGrupoSlc0001Prodt, that.idGrupoSlc0001Prodt) &&
+                Objects.equals(codProdt, that.codProdt) &&
+                Objects.equals(grupoSlc0001LiquidProdt, that.grupoSlc0001LiquidProdt) &&
+                Objects.equals(idGrupoSlc0001Liquid, that.idGrupoSlc0001Liquid) &&
+                Objects.equals(grupoSlc0001Liquid, that.grupoSlc0001Liquid);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(codProdt, grupoSlc0001LiquidProdt);
+        return Objects.hash(idGrupoSlc0001Prodt, codProdt, grupoSlc0001LiquidProdt, idGrupoSlc0001Liquid,
+                grupoSlc0001Liquid);
     }
 
     @Override
     public String toString() {
         return "GrupoSlc0001Prodt{" +
-                "codProdt='" + codProdt + '\'' +
+                "idGrupoSlc0001Prodt=" + idGrupoSlc0001Prodt +
+                ", codProdt='" + codProdt + '\'' +
                 ", grupoSlc0001LiquidProdt=" + grupoSlc0001LiquidProdt +
+                ", idGrupoSlc0001Liquid=" + idGrupoSlc0001Liquid +
+                ", grupoSlc0001Liquid=" + grupoSlc0001Liquid +
                 '}';
     }
 }

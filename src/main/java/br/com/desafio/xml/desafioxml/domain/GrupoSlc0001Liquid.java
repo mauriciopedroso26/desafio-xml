@@ -4,13 +4,16 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import javax.xml.bind.annotation.XmlElement;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 @Entity
 @Table(name = "TA_GRUPO_SLC0001_LIQUID", schema = "DESAFIO_XML")
-public class GrupoSlc0001Liquid {
+public class GrupoSlc0001Liquid implements Serializable {
+
+    private static final long serialVersionUID = -3055395561557427333L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SQ_GRUPO_SLC0001_LIQUID")
@@ -95,22 +98,28 @@ public class GrupoSlc0001Liquid {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         GrupoSlc0001Liquid that = (GrupoSlc0001Liquid) o;
-        return Objects.equals(dtLiquid, that.dtLiquid) &&
+        return Objects.equals(idGrupoSlc0001Liquid, that.idGrupoSlc0001Liquid) &&
+                Objects.equals(dtLiquid, that.dtLiquid) &&
                 Objects.equals(numSeqCicloLiquid, that.numSeqCicloLiquid) &&
-                Objects.equals(grupoSlc0001Prodt, that.grupoSlc0001Prodt);
+                Objects.equals(grupoSlc0001Prodt, that.grupoSlc0001Prodt) &&
+                Objects.equals(idSlc0001, that.idSlc0001) &&
+                Objects.equals(slc0001, that.slc0001);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(dtLiquid, numSeqCicloLiquid, grupoSlc0001Prodt);
+        return Objects.hash(idGrupoSlc0001Liquid, dtLiquid, numSeqCicloLiquid, grupoSlc0001Prodt, idSlc0001, slc0001);
     }
 
     @Override
     public String toString() {
         return "GrupoSlc0001Liquid{" +
-                "dtLiquid='" + dtLiquid + '\'' +
+                "idGrupoSlc0001Liquid=" + idGrupoSlc0001Liquid +
+                ", dtLiquid='" + dtLiquid + '\'' +
                 ", numSeqCicloLiquid=" + numSeqCicloLiquid +
                 ", grupoSlc0001Prodt=" + grupoSlc0001Prodt +
+                ", idSlc0001=" + idSlc0001 +
+                ", slc0001=" + slc0001 +
                 '}';
     }
 }

@@ -5,11 +5,14 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import javax.xml.bind.annotation.XmlElement;
+import java.io.Serializable;
 import java.util.Objects;
 
 @Entity
 @Table(name = "TA_SISMSG", schema = "DESAFIO_XML")
-public class Sismsg {
+public class Sismsg implements Serializable {
+
+    private static final long serialVersionUID = -1293318366978481486L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SQ_SISMSG")
@@ -67,18 +70,24 @@ public class Sismsg {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Sismsg sismsg = (Sismsg) o;
-        return Objects.equals(slc0001, sismsg.slc0001);
+        return Objects.equals(idSismsg, sismsg.idSismsg) &&
+                Objects.equals(idSlc0001, sismsg.idSlc0001) &&
+                Objects.equals(slc0001, sismsg.slc0001) &&
+                Objects.equals(slc0001Modelo, sismsg.slc0001Modelo);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(slc0001);
+        return Objects.hash(idSismsg, idSlc0001, slc0001, slc0001Modelo);
     }
 
     @Override
     public String toString() {
         return "Sismsg{" +
-                "slc0001=" + slc0001 +
+                "idSismsg=" + idSismsg +
+                ", idSlc0001=" + idSlc0001 +
+                ", slc0001=" + slc0001 +
+                ", slc0001Modelo=" + slc0001Modelo +
                 '}';
     }
 }

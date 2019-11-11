@@ -4,11 +4,14 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import javax.xml.bind.annotation.XmlElement;
+import java.io.Serializable;
 import java.util.Objects;
 
 @Entity
 @Table(name = "TA_GRUPO_SEQ", schema = "DESAFIO_XML")
-public class GrupoSeq {
+public class GrupoSeq implements Serializable {
+
+    private static final long serialVersionUID = -4129565346352496396L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SQ_GRUPO_SEQ")
@@ -76,20 +79,26 @@ public class GrupoSeq {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         GrupoSeq grupoSeq = (GrupoSeq) o;
-        return Objects.equals(numSeq, grupoSeq.numSeq) &&
-                Objects.equals(indrCont, grupoSeq.indrCont);
+        return Objects.equals(idGrupoSeq, grupoSeq.idGrupoSeq) &&
+                Objects.equals(numSeq, grupoSeq.numSeq) &&
+                Objects.equals(indrCont, grupoSeq.indrCont) &&
+                Objects.equals(idBcmsg, grupoSeq.idBcmsg) &&
+                Objects.equals(bcmsg, grupoSeq.bcmsg);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(numSeq, indrCont);
+        return Objects.hash(idGrupoSeq, numSeq, indrCont, idBcmsg, bcmsg);
     }
 
     @Override
     public String toString() {
         return "GrupoSeq{" +
-                "numSeq=" + numSeq +
+                "idGrupoSeq=" + idGrupoSeq +
+                ", numSeq=" + numSeq +
                 ", indrCont='" + indrCont + '\'' +
+                ", idBcmsg=" + idBcmsg +
+                ", bcmsg=" + bcmsg +
                 '}';
     }
 }

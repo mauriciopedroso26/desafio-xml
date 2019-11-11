@@ -4,11 +4,14 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import javax.xml.bind.annotation.XmlElement;
+import java.io.Serializable;
 import java.util.Objects;
 
 @Entity
 @Table(name = "TA_GRUPO_SLC0001_LIQUID_PRODT", schema = "DESAFIO_XML")
-public class GrupoSlc0001LiquidProdt {
+public class GrupoSlc0001LiquidProdt implements Serializable {
+
+    private static final long serialVersionUID = 2264320327031264375L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SQ_GRUPO_SLC0001_LIQUID_PRODT")
@@ -165,7 +168,8 @@ public class GrupoSlc0001LiquidProdt {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         GrupoSlc0001LiquidProdt that = (GrupoSlc0001LiquidProdt) o;
-        return Objects.equals(identdLinhaBilat, that.identdLinhaBilat) &&
+        return Objects.equals(idGrupoSlc0001LiquidProdt, that.idGrupoSlc0001LiquidProdt) &&
+                Objects.equals(identdLinhaBilat, that.identdLinhaBilat) &&
                 Objects.equals(tpDebCred, that.tpDebCred) &&
                 Objects.equals(isPbifCredtd, that.isPbifCredtd) &&
                 Objects.equals(isPbifDebtd, that.isPbifDebtd) &&
@@ -174,28 +178,34 @@ public class GrupoSlc0001LiquidProdt {
                 Objects.equals(nomCliDebtd, that.nomCliDebtd) &&
                 Objects.equals(cnpjNLiqdantCredtd, that.cnpjNLiqdantCredtd) &&
                 Objects.equals(nomCliCredtd, that.nomCliCredtd) &&
-                Objects.equals(tpTranscSlc, that.tpTranscSlc);
+                Objects.equals(tpTranscSlc, that.tpTranscSlc) &&
+                Objects.equals(idGrupoSlc0001Prodt, that.idGrupoSlc0001Prodt) &&
+                Objects.equals(grupoSlc0001Prodt, that.grupoSlc0001Prodt);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(identdLinhaBilat, tpDebCred, isPbifCredtd, isPbifDebtd, vlrLanc, cnpjNLiqdantDebtd,
-                nomCliDebtd, cnpjNLiqdantCredtd, nomCliCredtd, tpTranscSlc);
+        return Objects.hash(idGrupoSlc0001LiquidProdt, identdLinhaBilat, tpDebCred, isPbifCredtd, isPbifDebtd,
+                vlrLanc, cnpjNLiqdantDebtd, nomCliDebtd, cnpjNLiqdantCredtd, nomCliCredtd, tpTranscSlc,
+                idGrupoSlc0001Prodt, grupoSlc0001Prodt);
     }
 
     @Override
     public String toString() {
         return "GrupoSlc0001LiquidProdt{" +
-                "identdLinhaBilat='" + identdLinhaBilat + '\'' +
+                "idGrupoSlc0001LiquidProdt=" + idGrupoSlc0001LiquidProdt +
+                ", identdLinhaBilat='" + identdLinhaBilat + '\'' +
                 ", tpDebCred='" + tpDebCred + '\'' +
-                ", ispbifCredtd=" + isPbifCredtd +
-                ", ispbifDebtd=" + isPbifDebtd +
+                ", isPbifCredtd=" + isPbifCredtd +
+                ", isPbifDebtd=" + isPbifDebtd +
                 ", vlrLanc=" + vlrLanc +
                 ", cnpjNLiqdantDebtd='" + cnpjNLiqdantDebtd + '\'' +
                 ", nomCliDebtd='" + nomCliDebtd + '\'' +
                 ", cnpjNLiqdantCredtd='" + cnpjNLiqdantCredtd + '\'' +
                 ", nomCliCredtd='" + nomCliCredtd + '\'' +
                 ", tpTranscSlc=" + tpTranscSlc +
+                ", idGrupoSlc0001Prodt=" + idGrupoSlc0001Prodt +
+                ", grupoSlc0001Prodt=" + grupoSlc0001Prodt +
                 '}';
     }
 }

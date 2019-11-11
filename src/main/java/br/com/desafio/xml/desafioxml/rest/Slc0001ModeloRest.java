@@ -14,12 +14,12 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping(value = "/api/admin/slc")
-public class Slc0001Rest {
+public class Slc0001ModeloRest {
 
     private final Slc0001ModeloService slc0001ModeloService;
 
     @Autowired
-    public Slc0001Rest(Slc0001ModeloService slc0001ModeloService) {
+    public Slc0001ModeloRest(Slc0001ModeloService slc0001ModeloService) {
         this.slc0001ModeloService = slc0001ModeloService;
     }
 
@@ -39,14 +39,12 @@ public class Slc0001Rest {
     }
 
     @DeleteMapping
-    public ResponseEntity<Void> deleteAll() {
-        slc0001ModeloService.deleteAll();
-        return new ResponseEntity<>(HttpStatus.OK);
+    public ResponseEntity<String> deleteAll() {
+        return new ResponseEntity<>(slc0001ModeloService.deleteAll(), HttpStatus.OK);
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteById(@PathVariable Long id){
-        this.slc0001ModeloService.deleteById(id);
-        return new ResponseEntity<>(HttpStatus.OK);
+    public ResponseEntity<String> deleteById(@PathVariable Long id){
+        return new ResponseEntity<>(this.slc0001ModeloService.deleteById(id), HttpStatus.OK);
     }
 }

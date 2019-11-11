@@ -84,20 +84,24 @@ public class Slc0001Modelo implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
         Slc0001Modelo that = (Slc0001Modelo) o;
         return Objects.equals(idSlc0001Modelo, that.idSlc0001Modelo) &&
+                Objects.equals(idBcmsg, that.idBcmsg) &&
                 Objects.equals(bcmsg, that.bcmsg) &&
+                Objects.equals(idSismsg, that.idSismsg) &&
                 Objects.equals(sismsg, that.sismsg);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(idSlc0001Modelo, bcmsg, sismsg);
+        return Objects.hash(idSlc0001Modelo, idBcmsg, bcmsg, idSismsg, sismsg);
     }
 
     @Override
     public String toString() {
         return "Slc0001Modelo{" +
-                "idSlc0001=" + idSlc0001Modelo +
+                "idSlc0001Modelo=" + idSlc0001Modelo +
+                ", idBcmsg=" + idBcmsg +
                 ", bcmsg=" + bcmsg +
+                ", idSismsg=" + idSismsg +
                 ", sismsg=" + sismsg +
                 '}';
     }

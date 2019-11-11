@@ -110,26 +110,30 @@ public class Bcmsg implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Bcmsg bcmsg = (Bcmsg) o;
-        return Objects.equals(identdEmissor, bcmsg.identdEmissor) &&
+        return Objects.equals(idBcmsg, bcmsg.idBcmsg) &&
+                Objects.equals(identdEmissor, bcmsg.identdEmissor) &&
                 Objects.equals(identdDestinatario, bcmsg.identdDestinatario) &&
                 Objects.equals(grupoSeq, bcmsg.grupoSeq) &&
                 Objects.equals(domSist, bcmsg.domSist) &&
-                Objects.equals(nuop, bcmsg.nuop);
+                Objects.equals(nuop, bcmsg.nuop) &&
+                Objects.equals(slc0001Modelo, bcmsg.slc0001Modelo);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(identdEmissor, identdDestinatario, grupoSeq, domSist, nuop);
+        return Objects.hash(idBcmsg, identdEmissor, identdDestinatario, grupoSeq, domSist, nuop, slc0001Modelo);
     }
 
     @Override
     public String toString() {
         return "Bcmsg{" +
-                "identdEmissor=" + identdEmissor +
+                "idBcmsg=" + idBcmsg +
+                ", identdEmissor=" + identdEmissor +
                 ", identdDestinatario=" + identdDestinatario +
                 ", grupoSeq=" + grupoSeq +
                 ", domSist='" + domSist + '\'' +
                 ", nuop='" + nuop + '\'' +
+                ", slc0001Modelo=" + slc0001Modelo +
                 '}';
     }
 }

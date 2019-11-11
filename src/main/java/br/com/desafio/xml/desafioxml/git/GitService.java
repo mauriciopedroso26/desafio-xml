@@ -19,7 +19,6 @@ public class GitService {
             clone.getRepository().close();
 
         } catch (GitAPIException e) {
-            System.out.println("Exception occurred while cloning repository");
             e.printStackTrace();
         }
 

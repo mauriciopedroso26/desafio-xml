@@ -4,6 +4,7 @@ import br.com.desafio.xml.desafioxml.domain.Bcmsg;
 import br.com.desafio.xml.desafioxml.domain.Sismsg;
 import br.com.desafio.xml.desafioxml.entity.Slc0001Modelo;
 import br.com.desafio.xml.desafioxml.file.FileService;
+import br.com.desafio.xml.desafioxml.utils.MessageService;
 import br.com.desafio.xml.desafioxml.xml.read.XmlReader;
 import br.com.desafio.xml.desafioxml.git.GitService;
 import br.com.desafio.xml.desafioxml.repository.Slc0001ModeloRepository;
@@ -27,17 +28,19 @@ public class Slc0001ModeloService {
     private final FileService fileService;
     private final BcmsgService bcmsgService;
     private final SismsgService sismsgService;
+    private final MessageService messageService;
     private final XmlReader xmlReader;
     private final XmlToSlc0001ModeloConverter xmlToSlc0001ModeloConverter;
     private final Slc0001ModeloRepository slc0001ModeloRepository;
 
     @Autowired
-    public Slc0001ModeloService(GitService gitService, FileService fileService, BcmsgService bcmsgService, SismsgService sismsgService, XmlReader xmlReader,
+    public Slc0001ModeloService(GitService gitService, FileService fileService, BcmsgService bcmsgService, SismsgService sismsgService, MessageService messageService, XmlReader xmlReader,
                                 XmlToSlc0001ModeloConverter xmlToSlc0001ModeloConverter, Slc0001ModeloRepository slc0001ModeloRepository) {
         this.gitService = gitService;
         this.fileService = fileService;
         this.bcmsgService = bcmsgService;
         this.sismsgService = sismsgService;
+        this.messageService = messageService;
         this.xmlReader = xmlReader;
         this.xmlToSlc0001ModeloConverter = xmlToSlc0001ModeloConverter;
         this.slc0001ModeloRepository = slc0001ModeloRepository;
@@ -67,11 +70,21 @@ public class Slc0001ModeloService {
         return slc0001ModeloRepository.findById(id);
     }
 
-    public void deleteAll(){
-        slc0001ModeloRepository.deleteAll();
+    public String deleteAll(){
+        if(slc0001ModeloRepository.findAll().size() > 0) {
+            slc0001ModeloRepository.deleteAll();
+            return messageService.getMessage("delete.all");
+        }
+
+        return messageService.getMessage("delete.all.not.found");
     }
 
-    public void deleteById(Long id){
-        slc0001ModeloRepository.deleteById(id);
+    public String deleteById(Long id){
+        if(slc0001ModeloRepository.findById(id).isPresent()){
+            slc0001ModeloRepository.deleteById(id);
+            return messageService.getMessage("delete.by.id", String.valueOf(id));
+        }
+
+        return messageService.getMessage("delete.by.id.not.found", String.valueOf(id));
     }
 }

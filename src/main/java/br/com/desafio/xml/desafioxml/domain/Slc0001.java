@@ -4,13 +4,16 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import javax.xml.bind.annotation.XmlElement;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 @Entity
 @Table(name = "TA_SLC0001", schema = "DESAFIO_XML")
-public class Slc0001 {
+public class Slc0001 implements Serializable {
+
+    private static final long serialVersionUID = -8916263565743242290L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SQ_SLC0001")
@@ -126,30 +129,34 @@ public class Slc0001 {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Slc0001 slc0001 = (Slc0001) o;
-        return Objects.equals(codMsg, slc0001.codMsg) &&
+        return Objects.equals(idSlc0001, slc0001.idSlc0001) &&
+                Objects.equals(codMsg, slc0001.codMsg) &&
                 Objects.equals(numCtrlSLC, slc0001.numCtrlSLC) &&
                 Objects.equals(ispbif, slc0001.ispbif) &&
                 Objects.equals(tpInf, slc0001.tpInf) &&
                 Objects.equals(grupoSlc0001Liquid, slc0001.grupoSlc0001Liquid) &&
                 Objects.equals(dtHrSlc, slc0001.dtHrSlc) &&
-                Objects.equals(dtMovto, slc0001.dtMovto);
+                Objects.equals(dtMovto, slc0001.dtMovto) &&
+                Objects.equals(sismsg, slc0001.sismsg);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(codMsg, numCtrlSLC, ispbif, tpInf, grupoSlc0001Liquid, dtHrSlc, dtMovto);
+        return Objects.hash(idSlc0001, codMsg, numCtrlSLC, ispbif, tpInf, grupoSlc0001Liquid, dtHrSlc, dtMovto, sismsg);
     }
 
     @Override
     public String toString() {
         return "Slc0001{" +
-                "codMsg='" + codMsg + '\'' +
+                "idSlc0001=" + idSlc0001 +
+                ", codMsg='" + codMsg + '\'' +
                 ", numCtrlSLC='" + numCtrlSLC + '\'' +
                 ", ispbif=" + ispbif +
                 ", tpInf='" + tpInf + '\'' +
                 ", grupoSlc0001Liquid=" + grupoSlc0001Liquid +
                 ", dtHrSlc='" + dtHrSlc + '\'' +
                 ", dtMovto='" + dtMovto + '\'' +
+                ", sismsg=" + sismsg +
                 '}';
     }
 }
